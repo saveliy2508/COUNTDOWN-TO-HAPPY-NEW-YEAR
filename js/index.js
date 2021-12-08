@@ -1,7 +1,9 @@
 //Дата таймера
 let countdownDate = new Date("Dec 31, 2021 23:59:59")
+let countdownNumbers = document.querySelector('.countdown__timer')
+let countdownText = document.querySelector('.countdown__text')
 // Обновление каждую секунду
-let x = setInterval(function () {
+let counter = setInterval(function () {
     // сегодняшняя дата
     let now = new Date().getTime();
     // разница даты таймера и настоящего времени
@@ -21,4 +23,9 @@ let x = setInterval(function () {
     hoursArea.innerHTML = hours;
     minutesArea.innerHTML = minutes;
     secondsArea.innerHTML = seconds;
+    if(distance < 0) {
+        countdownText.innerHTML = 'Happy new year 2022!';
+        countdownNumbers.classList.add('hide')
+        clearInterval(counter);
+    }
 }, 1000);
